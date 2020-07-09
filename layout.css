@@ -1,0 +1,33 @@
+#left-sidebar {
+    height: 90vh;
+    width: 30%;
+    background: peru;
+}
+
+#main-content {
+    background: cornsilk;
+    height: 90vh;
+    width: 70%;
+}
+
+#sub-division {
+    width: 100vw;
+    height: 10vh;
+    background: darkblue;
+    color: white;
+}
+
+@media screen and (max-width:600px) {
+    #left-sidebar {
+        height: 10vh;
+        width: 100vw;
+    }
+    #main-content {
+        height: 80vh;
+        width: 100vw;
+    }
+    #sub-division {
+        height: 10vh;
+        width: 100vw;
+    }
+}
