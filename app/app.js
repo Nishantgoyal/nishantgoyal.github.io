@@ -5,10 +5,10 @@ const methodOverride  = require("method-override"),
       mongoose    = require("mongoose"),
       passport    = require("passport"),
       express     = require("express"),
-      app         = express(),
-      seedDB      = require("./seeds.js");
+      app         = express();
+      // seedDB      = require("./seeds.js");
 
-seedDB();
+// seedDB();
 
 const User        = require("./models/users");
 
