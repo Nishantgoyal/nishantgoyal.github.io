@@ -1,0 +1,10 @@
+<%- include ("../partials/header.ejs") %>
+
+<h1> TODOs </h1>
+<ul>
+  <% todos.forEach(function(todo) { %>
+    <li> <%= todo.item %> </li>
+  <% }); %>
+</ul>
+
+<%- include ("../partials/footer.ejs") %>

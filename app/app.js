@@ -5,11 +5,15 @@ const methodOverride  = require("method-override"),
       mongoose    = require("mongoose"),
       passport    = require("passport"),
       express     = require("express"),
-      app         = express();
+      app         = express(),
+      seedDB      = require("./seeds.js");
+
+seedDB();
 
 const User        = require("./models/users");
 
-var indexRoutes       = require("./routes/index");
+var indexRoutes       = require("./routes/index"),
+    todoRoutes        = require("./routes/todos");
 
 mongoose.connect("mongodb://resume_db/resume");
 
@@ -38,6 +42,7 @@ app.use(function(req, res, next) {
 app.use(methodOverride("_method"));
 
 app.use(indexRoutes);
+app.use("/todos", todoRoutes);
 
 app.use(flash);
 
