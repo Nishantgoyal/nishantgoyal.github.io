@@ -12,3 +12,7 @@ services:
       - resume_db 
   resume_db:
     image: mongo:4.2.8
+    volumes:
+      - db: /data/db
+      - config: /data/configdb
+
