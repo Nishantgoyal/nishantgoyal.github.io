@@ -2,6 +2,7 @@ const mongoose    = require("mongoose");
 
 var TODOSchema = new mongoose.Schema({
   item: String,
+  task_status: String,
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,

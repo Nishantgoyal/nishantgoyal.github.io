@@ -16,6 +16,7 @@ router.get("/", middleware.isLoggedIn, function(req, res) {
 router.post("/", middleware.isLoggedIn, function(req, res) {
   Todo.create({
     item: req.body.item,
+    task_status: req.body.task_status,
     author: {
       username: req.user.username,
       id: req.user.id
@@ -31,7 +32,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 });
 
 router.get("/:id/edit", middleware.isLoggedIn,function(req, res) {
-  Todo.find({}, function(err, todos) {
+  Todo.find({'author.id': req.user.id}, function(err, todos) {
     if (err) {
       res.send("Error"); 
     } else {
