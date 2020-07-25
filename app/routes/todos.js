@@ -1,9 +1,10 @@
 const express = require("express"),
       Todo    = require("../models/todos"),
-      router  = express.Router();
+      router  = express.Router(),
+      middleware  = require("../middleware/index");
 
-router.get("/", function(req, res) {
-  Todo.find({}, function(err, todos) {
+router.get("/", middleware.isLoggedIn, function(req, res) {
+  Todo.find({'author.id': req.user.id}, function(err, todos) {
     if (err) {
       res.send("Error"); 
     } else {
@@ -12,8 +13,14 @@ router.get("/", function(req, res) {
   });
 });
 
-router.post("/", function(req, res) {
-  Todo.create(req.body.todo, function(err, todo) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
+  Todo.create({
+    item: req.body.item,
+    author: {
+      username: req.user.username,
+      id: req.user.id
+    }
+  }, function(err, todo) {
     if (err) {
       res.send(err);
     } else {
@@ -23,7 +30,7 @@ router.post("/", function(req, res) {
   });
 });
 
-router.get("/:id/edit", function(req, res) {
+router.get("/:id/edit", middleware.isLoggedIn,function(req, res) {
   Todo.find({}, function(err, todos) {
     if (err) {
       res.send("Error"); 
@@ -33,7 +40,7 @@ router.get("/:id/edit", function(req, res) {
   });
 });
 
-router.put("/:id", function(req, res) {
+router.put("/:id", middleware.isLoggedIn,function(req, res) {
   Todo.findByIdAndUpdate(req.params.id, req.body.todo, function(err, todo) {
     if(err) {
       res.send(err);
@@ -44,7 +51,7 @@ router.put("/:id", function(req, res) {
   });
 });
 
-router.delete("/:id", function(req, res) {
+router.delete("/:id", middleware.isLoggedIn,function(req, res) {
   Todo.findByIdAndDelete(req.params.id, function(err) {
     if(err) { 
       res.send(err);

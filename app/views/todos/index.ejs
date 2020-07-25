@@ -2,10 +2,12 @@
 
 <h1> TODOs </h1>
 
-<form action="/todos" method="POST">
-  <input type="text" name="todo[item]" placeholder="Add Todo">
-  <input type="submit" value="Create">
-</form>
+<% if(currentUser) { %>
+  <form action="/todos" method="POST">
+    <input type="text" name="item" placeholder="Add Todo">
+    <input type="submit" value="Create">
+  </form>
+<% } %>
 
 
 <ul>

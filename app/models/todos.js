@@ -1,7 +1,14 @@
 const mongoose    = require("mongoose");
 
 var TODOSchema = new mongoose.Schema({
-  item: String
+  item: String,
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+    username: String
+  }
 });
 
 module.exports =  mongoose.model("Todo", TODOSchema);
