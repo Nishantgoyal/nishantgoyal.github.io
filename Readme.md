@@ -20,3 +20,6 @@
     - Tabularize: Done
     - Color according to status
 
+## Version 2
+
+- Pomodoro

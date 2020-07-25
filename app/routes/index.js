@@ -46,4 +46,7 @@ router.get("/logout", function(req, res) {
   res.redirect("/");
 });
 
+router.get("/pomodoro", function(req, res) {
+  res.render("timer");
+})
 module.exports = router;
