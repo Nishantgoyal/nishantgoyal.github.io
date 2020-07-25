@@ -11,3 +11,9 @@
     - Edit Route: Done
     - Update Route: Done
     - Delete Route: Done
+  - Associate Todos with Author: Done
+  - Add Status to Todos
+  - Add Categories
+  - Add Type
+    - Recurring
+
