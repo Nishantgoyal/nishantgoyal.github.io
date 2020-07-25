@@ -18,6 +18,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
     item: req.body.item,
     category: req.body.category,
     task_status: req.body.task_status,
+    type: req.body.type,
     author: {
       username: req.user.username,
       id: req.user.id

@@ -11,6 +11,10 @@
       <option value="in-progress"> in-progress </option>
       <option value="done"> done </option>
     </select>
+    <select name="type">
+      <option value="one-time" default> One Time </option>
+      <option value="recurring"> Recurring </option>
+    </select>
     <input type="submit" value="Create">
   </form>
 <% } %>
@@ -28,13 +32,17 @@
             <option value="in-progress" default> in-progress </option>
             <option value="done" default> done </option>
           </select>
+          <select name="todo[type]">
+            <option value="one-time" default> One Time </option>
+            <option value="recurring"> Recurring </option>
+          </select>
           <input type="submit" name="Update">
         </form>
       <% } else { %>
         <a href="/todos/<%= todo.id %>/edit">
           <%= todo.item %> - <%= todo.category %> 
         </a>
-        <span> <%= todo.task_status %> </span> 
+        <span> <%= todo.task_status %> - <%= todo.type %> </span> 
         <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
           <input type="submit" value="x">
         </form>

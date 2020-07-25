@@ -4,6 +4,7 @@ var TODOSchema = new mongoose.Schema({
   item: String,
   task_status: String,
   category: String,
+  type: String,
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
