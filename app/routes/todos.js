@@ -48,11 +48,11 @@ router.get("/:id", middleware.isLoggedIn, function(req, res){
 });
 
 router.get("/:id/edit", middleware.isLoggedIn,function(req, res) {
-  Todo.find({'author.id': req.user.id}, function(err, todos) {
+  Todo.findById(req.params.id, function(err, todo) {
     if (err) {
       res.send("Error"); 
     } else {
-      res.render("todos/index", {todos: todos, id: req.params.id});
+      res.render("todos/edit", {todo: todo});
     }
   });
 });

@@ -1,0 +1,30 @@
+<%- include ("../partials/header.ejs") %>
+
+<div class="container">
+<form class="form new" action="/todos/<%= todo.id %>?_method=PUT" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="text" name="todo[item]" value="<%= todo.item %>">
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" name="todo[category]" value="<%= todo.category %>">
+    </div>
+    <div class="form-group">
+        <select class="form-control" name="todo[task_status]">
+        <option value="todo" default> Todo </option>
+        <option value="in-progress" default> in-progress </option>
+        <option value="done" default> done </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" name="todo[type]">
+        <option value="one-time" default> One Time </option>
+        <option value="recurring"> Recurring </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input class="form-control btn btn-primary" type="submit" name="Update">
+    </div>
+</form>
+</div>
+
+<%- include ("../partials/footer.ejs") %>
