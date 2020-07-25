@@ -37,6 +37,16 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
   });
 });
 
+router.get("/:id", middleware.isLoggedIn, function(req, res){
+  Todo.findById(req.params.id, function(err, todo) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render("todos/show", {todo: todo});
+    }
+  });
+});
+
 router.get("/:id/edit", middleware.isLoggedIn,function(req, res) {
   Todo.find({'author.id': req.user.id}, function(err, todos) {
     if (err) {
