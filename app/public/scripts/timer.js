@@ -1,5 +1,3 @@
-// Credit: Mateusz Rybczonec
-
 let TIME_LIMIT = 30;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
@@ -11,20 +9,19 @@ const ALERT_THRESHOLD = Math.max(Number(TIME_LIMIT / 20), 5);
 console.log(WARNING_THRESHOLD);
 console.log(ALERT_THRESHOLD);
 const COLOR_CODES = {
-  info: {
+info: {
     color: "green"
-  },
-  warning: {
+},
+warning: {
     color: "orange",
     threshold: WARNING_THRESHOLD
-  },
-  alert: {
+},
+alert: {
     color: "red",
     threshold: ALERT_THRESHOLD
-  }
+}
 };
 let remainingPathColor = COLOR_CODES.info.color;
-
 
 document.getElementById("start_timer").addEventListener("click", function(){
     console.log("Timer Starting");
@@ -32,43 +29,58 @@ document.getElementById("start_timer").addEventListener("click", function(){
     timePassed = 0;
     remainingPathColor = COLOR_CODES.info.color;
     timeLeft = TIME_LIMIT;
+    clearInterval(timerInterval);
     timerInterval = null;
     document.getElementById("app").innerHTML = `
         <div class="base-timer">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g class="base-timer__circle">
-            <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-            <path
-                id="base-timer-path-remaining"
-                stroke-dasharray="283"
-                class="base-timer__path-remaining ${remainingPathColor}"
-                d="
-                M 50, 50
-                m -45, 0
-                a 45,45 0 1,0 90,0
-                a 45,45 0 1,0 -90,0
-                "
-            ></path>
-            </g>
-        </svg>
-        <span id="base-timer-label" class="base-timer__label">${formatTime(
-            timeLeft
-        )}</span>
+            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g class="base-timer__circle">
+                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                    <path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining ${remainingPathColor}" d="
+                        M 50, 50
+                        m -45, 0
+                        a 45,45 0 1,0 90,0
+                        a 45,45 0 1,0 -90,0
+                        ">
+                    </path>
+                </g>
+            </svg>
+            <span id="base-timer-label" class="base-timer__label">
+                ${formatTime(timeLeft)}
+            </span>
         </div>
         `;
-    document.getElementById("start_timer").disabled = true;
-    document.getElementById("duration").disabled = true;
     startTimer();
 });
 
 
 function onTimesUp() {
     clearInterval(timerInterval);
-    document.getElementById("duration").disabled = false;
-    document.getElementById("start_timer").disabled = false;
+    document.getElementById("start_timer").innerHTML = "Start";
+    remainingPathColor = COLOR_CODES.info.color;
+    document.getElementById("app").innerHTML = `
+    <div class="base-timer">
+        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g class="base-timer__circle">
+                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                <path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining ${remainingPathColor}" d="
+                    M 50, 50
+                    m -45, 0
+                    a 45,45 0 1,0 90,0
+                    a 45,45 0 1,0 -90,0
+                    ">
+                </path>
+            </g>
+        </svg>
+        <span id="base-timer-label" class="base-timer__label">
+            ${formatTime(timeLeft)}
+        </span>
+    </div>
+    `;
 }
 
 function startTimer() {
+    document.getElementById("start_timer").innerHTML = "Reset";
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
     timeLeft = TIME_LIMIT - timePassed;
