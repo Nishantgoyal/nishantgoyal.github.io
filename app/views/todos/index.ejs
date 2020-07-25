@@ -48,7 +48,7 @@
     <% todos.forEach(function(todo) { %>
       <% if(id && id === todo.id) { %>
         <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
-          <tr>
+          <tr class="<%= todo.task_status %>">
             <td>
               <div class="form-group">
                 <input class="form-control" type="text" name="todo[item]" value="<%= todo.item %>">
@@ -84,7 +84,7 @@
           </tr>
         </form>
       <% } else { %>
-        <tr>
+        <tr class="<%= todo.task_status %>">
           <td>
             <a href="/todos/<%= todo.id %>/edit">
               <%= todo.item %>

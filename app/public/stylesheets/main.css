@@ -1,7 +1,20 @@
+
 .strike {
   text-decoration: line-through;
 }
 
 .inline-form {
   display: inline;
+}
+
+.done {
+  background-color: #45B649;
+}
+
+.todo {
+  background-color: #FFC371;
+}
+
+.in-progress {
+  background-color: #d7d2cc;
 }
