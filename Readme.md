@@ -12,8 +12,11 @@
     - Update Route: Done
     - Delete Route: Done
   - Associate Todos with Author: Done
-  - Add Status to Todos
-  - Add Categories
-  - Add Type
+  - Add Status to Todos: Done
+  - Add Categories: Done
+  - Add Type: Done
     - Recurring
+  - Styling
+    - Tabularize: Done
+    - Color according to status
 

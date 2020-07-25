@@ -1,54 +1,112 @@
 <%- include ("../partials/header.ejs") %>
 
 <h1> TODOs </h1>
-
-<% if(currentUser) { %>
-  <form action="/todos" method="POST">
-    <input type="text" name="item" placeholder="Add Todo">
-    <input type="text" name="category" placeholder="Category">
-    <select name="task_status">
-      <option value="todo" default> Todo </option>
-      <option value="in-progress"> in-progress </option>
-      <option value="done"> done </option>
-    </select>
-    <select name="type">
-      <option value="one-time" default> One Time </option>
-      <option value="recurring"> Recurring </option>
-    </select>
-    <input type="submit" value="Create">
-  </form>
-<% } %>
-
-
-<ul>
-  <% todos.forEach(function(todo) { %>
-    <li> 
-      <% if(id && id === todo.id) { %>
-        <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
-          <input type="text" name="todo[item]" value="<%= todo.item %>">
-          <input type="text" name="todo[category]" value="<%= todo.category %>">
-          <select name="todo[task_status]">
-            <option value="todo" default> Todo </option>
-            <option value="in-progress" default> in-progress </option>
-            <option value="done" default> done </option>
-          </select>
-          <select name="todo[type]">
-            <option value="one-time" default> One Time </option>
-            <option value="recurring"> Recurring </option>
-          </select>
-          <input type="submit" name="Update">
-        </form>
-      <% } else { %>
-        <a href="/todos/<%= todo.id %>/edit">
-          <%= todo.item %> - <%= todo.category %> 
-        </a>
-        <span> <%= todo.task_status %> - <%= todo.type %> </span> 
-        <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
-          <input type="submit" value="x">
+<div class="container">
+  <table class="table">
+    <thead>
+      <% if(currentUser) { %>
+        <form class="form-inline" action="/todos" method="POST">
+          <tr>
+            <th>
+              <div class="form-group">
+                <input class="form-control" type="text" name="item" placeholder="Add Todo">
+              </div>
+            </th>
+            <th>
+              <div class="form-group">
+                <input class="form-control" type="text" name="category" placeholder="Category">
+              </div>
+            </th>
+            <th>
+              <div class="form-group">
+                <select class="form-control" name="task_status">
+                  <option value="todo" default> Todo </option>
+                  <option value="in-progress"> in-progress </option>
+                  <option value="done"> done </option>
+                </select>
+              </div>
+            </th>
+            <th>
+              <div class="form-group">
+                <select class="form-control" name="type">
+                  <option value="one-time" default> One Time </option>
+                  <option value="recurring"> Recurring </option>
+                </select>
+              </div>
+            </th>
+            <th>
+              <div class="form-group pull-right">
+                <input class="form-control btn btn-primary" type="submit" value="Create">
+              </div>
+            </th>
+          </tr>
         </form>
       <% } %>
-    </li>
+  </thead>
+    
+  <tbody>
+    <% todos.forEach(function(todo) { %>
+      <% if(id && id === todo.id) { %>
+        <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
+          <tr>
+            <td>
+              <div class="form-group">
+                <input class="form-control" type="text" name="todo[item]" value="<%= todo.item %>">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <input class="form-control" type="text" name="todo[category]" value="<%= todo.category %>">
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <select class="form-control" name="todo[task_status]">
+                  <option value="todo" default> Todo </option>
+                  <option value="in-progress" default> in-progress </option>
+                  <option value="done" default> done </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <select class="form-control" name="todo[type]">
+                  <option value="one-time" default> One Time </option>
+                  <option value="recurring"> Recurring </option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div class="form-group pull-right">
+                <input class="form-control" type="submit" name="Update">
+              </div>
+            </td>
+          </tr>
+        </form>
+      <% } else { %>
+        <tr>
+          <td>
+            <a href="/todos/<%= todo.id %>/edit">
+              <%= todo.item %>
+            </a>
+          </td>
+          <td>
+            <%= todo.category %> 
+          </td>
+          <td> <%= todo.task_status %> </td>
+          <td> <%= todo.type %> </td>
+          <td>
+            <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
+              <div class="form-group pull-right">
+                <input class="form-control" type="submit" value="x">
+              </div>
+            </form>
+          </td>
+        </tr>
+      <% } %>
+    </div>
   <% }); %>
-</ul>
+  </table>
+</div>
 
 <%- include ("../partials/footer.ejs") %>
