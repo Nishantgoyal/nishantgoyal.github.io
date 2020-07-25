@@ -5,6 +5,7 @@
 <% if(currentUser) { %>
   <form action="/todos" method="POST">
     <input type="text" name="item" placeholder="Add Todo">
+    <input type="text" name="category" placeholder="Category">
     <select name="task_status">
       <option value="todo" default> Todo </option>
       <option value="in-progress"> in-progress </option>
@@ -21,6 +22,7 @@
       <% if(id && id === todo.id) { %>
         <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
           <input type="text" name="todo[item]" value="<%= todo.item %>">
+          <input type="text" name="todo[category]" value="<%= todo.category %>">
           <select name="todo[task_status]">
             <option value="todo" default> Todo </option>
             <option value="in-progress" default> in-progress </option>
@@ -30,7 +32,7 @@
         </form>
       <% } else { %>
         <a href="/todos/<%= todo.id %>/edit">
-          <%= todo.item %> 
+          <%= todo.item %> - <%= todo.category %> 
         </a>
         <span> <%= todo.task_status %> </span> 
         <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
