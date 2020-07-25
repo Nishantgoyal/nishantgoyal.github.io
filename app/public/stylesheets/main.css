@@ -18,3 +18,8 @@
 .in-progress {
   background-color: #d7d2cc;
 }
+
+form.new {
+  max-width: 300px;
+  margin: auto;
+}

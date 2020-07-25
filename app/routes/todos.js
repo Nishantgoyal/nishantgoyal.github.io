@@ -13,11 +13,15 @@ router.get("/", middleware.isLoggedIn, function(req, res) {
   });
 });
 
+router.get("/new", middleware.isLoggedIn, function(req, res) {
+  res.render("todos/new");
+});
+
 router.post("/", middleware.isLoggedIn, function(req, res) {
   Todo.create({
     item: req.body.item,
     category: req.body.category,
-    task_status: req.body.task_status,
+    task_status: "todo",
     type: req.body.type,
     author: {
       username: req.user.username,

@@ -3,46 +3,6 @@
 <h1> TODOs </h1>
 <div class="container">
   <table class="table">
-    <thead>
-      <% if(currentUser) { %>
-        <form class="form-inline" action="/todos" method="POST">
-          <tr>
-            <th>
-              <div class="form-group">
-                <input class="form-control" type="text" name="item" placeholder="Add Todo">
-              </div>
-            </th>
-            <th>
-              <div class="form-group">
-                <input class="form-control" type="text" name="category" placeholder="Category">
-              </div>
-            </th>
-            <th>
-              <div class="form-group">
-                <select class="form-control" name="task_status">
-                  <option value="todo" default> Todo </option>
-                  <option value="in-progress"> in-progress </option>
-                  <option value="done"> done </option>
-                </select>
-              </div>
-            </th>
-            <th>
-              <div class="form-group">
-                <select class="form-control" name="type">
-                  <option value="one-time" default> One Time </option>
-                  <option value="recurring"> Recurring </option>
-                </select>
-              </div>
-            </th>
-            <th>
-              <div class="form-group pull-right">
-                <input class="form-control btn btn-primary" type="submit" value="Create">
-              </div>
-            </th>
-          </tr>
-        </form>
-      <% } %>
-  </thead>
     
   <tbody>
     <% todos.forEach(function(todo) { %>
