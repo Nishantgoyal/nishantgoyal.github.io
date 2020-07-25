@@ -2,10 +2,21 @@ body {
     font-family: sans-serif;
     display: grid;
 }
+
+#timer_container {
+    width: 450px;
+    margin: auto;
+}
+
+button:disabled{
+    color: black;
+}
 #app {
     margin: auto;
 }  
+
 .base-timer {
+    margin: auto;
     position: relative;
     width: 300px;
     height: 300px;

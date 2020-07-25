@@ -1,6 +1,11 @@
 <%- include ("partials/header.ejs") %>
-<div id="app"></div>
-<div>
-    <button id="start_timer">Start</button>
+<div class="container" id="timer_container">
+    <button class="form-control btn btn-primary" id="start_timer">Start</button>
+    <select class="form-control" name="timer_duration" id="duration">
+        <option value="300">5 min</option>
+        <option value="900">15 min</option>
+        <option value="2700">45 min</option>
+    </select>
+    <div id="app"></div>
 </div>
 <%- include ("partials/footer.ejs") %>

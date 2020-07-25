@@ -1,6 +1,6 @@
 // Credit: Mateusz Rybczonec
 
-const TIME_LIMIT = 30;
+let TIME_LIMIT = 30;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -28,6 +28,7 @@ let remainingPathColor = COLOR_CODES.info.color;
 
 document.getElementById("start_timer").addEventListener("click", function(){
     console.log("Timer Starting");
+    TIME_LIMIT = Number(document.getElementById("duration").value);
     timePassed = 0;
     remainingPathColor = COLOR_CODES.info.color;
     timeLeft = TIME_LIMIT;
@@ -56,13 +57,15 @@ document.getElementById("start_timer").addEventListener("click", function(){
         </div>
         `;
     document.getElementById("start_timer").disabled = true;
+    document.getElementById("duration").disabled = true;
     startTimer();
 });
 
 
 function onTimesUp() {
-  clearInterval(timerInterval);
-  document.getElementById("start_timer").disabled = false;
+    clearInterval(timerInterval);
+    document.getElementById("duration").disabled = false;
+    document.getElementById("start_timer").disabled = false;
 }
 
 function startTimer() {
