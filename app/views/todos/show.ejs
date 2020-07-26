@@ -1,18 +1,17 @@
 <%- include ("../partials/header.ejs") %>
 
-<div class="container">
-    <h1><%= todo.item %></h1>
+<div class="container mt-5">
+    <h1 class="text-center"><%= todo.item %></h1>
+    <div> Status of the Task: <%= todo.task_status %> </div>
     <a class="btn btn-warning" href="/todos/<%= todo.id %>/edit">
         edit
     </a>
-    <div> <%= todo.task_status %> </div>
     <div> <%= todo.type %> </div>
     <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
-        <div class="form-group pull-right">
-          <input class="form-control" type="submit" value="x">
-        </div>
-      </form>
-
+      <div class="form-group pull-right">
+        <input class="form-control" type="submit" value="x">
+      </div>
+    </form>
 </div>
 
 <%- include ("../partials/footer.ejs") %>
