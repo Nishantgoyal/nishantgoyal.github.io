@@ -23,4 +23,5 @@
 ## Version 2
 
 - Pomodoro: Done
-- Add bootstrap 4
+- Add bootstrap 4: Done
+- Add volume on timer end: Done

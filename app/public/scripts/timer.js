@@ -77,6 +77,8 @@ function onTimesUp() {
         </span>
     </div>
     `;
+    var audio = new Audio('/audio/211869__wikbeats__110-loop.wav');
+    audio.play();
 }
 
 function startTimer() {
