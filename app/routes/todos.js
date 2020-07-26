@@ -8,7 +8,7 @@ router.get("/", middleware.isLoggedIn, function(req, res) {
     if (err) {
       res.send("Error"); 
     } else {
-      res.render("todos/index", {todos: todos, id: null});
+      res.render("todos/index", {todos: todos, currentTodo: null});
     }
   });
 });
@@ -42,7 +42,14 @@ router.get("/:id", middleware.isLoggedIn, function(req, res){
     if(err) {
       console.log(err);
     } else {
-      res.render("todos/show", {todo: todo});
+      Todo.find({'author.id': req.user.id}, function(err, todos) {
+        if (err) {
+          res.send("Error"); 
+        } else {
+          res.render("todos/index", {todos: todos, currentTodo: todo});
+        }
+      });
+      // res.render("todos/show", {todo: todo});
     }
   });
 });

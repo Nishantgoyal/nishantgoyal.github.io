@@ -18,6 +18,12 @@
       <div class="d-flex justify-content-end">
         <a class="btn btn-info" href="/todos/new">Add A TODO</a>
       </div>
+      <% if(currentTodo) { %>
+        <h1 class="text-center mt-5"><%= currentTodo.item %></h1>
+        <form action="/todos/<%= currentTodo.id %>?_method=DELETE" method="POST" class="d-flex justify-content-end">
+          <input class="btn btn-danger" type="submit" value="Delete Todo">
+        </form>
+      <% } %>
     </div>
   </div>
 </div>
