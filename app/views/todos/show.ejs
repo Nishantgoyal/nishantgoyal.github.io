@@ -5,6 +5,14 @@
     <a class="btn btn-warning" href="/todos/<%= todo.id %>/edit">
         edit
     </a>
+    <div> <%= todo.task_status %> </div>
+    <div> <%= todo.type %> </div>
+    <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
+        <div class="form-group pull-right">
+          <input class="form-control" type="submit" value="x">
+        </div>
+      </form>
+
 </div>
 
 <%- include ("../partials/footer.ejs") %>

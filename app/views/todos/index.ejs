@@ -1,72 +1,23 @@
 <%- include ("../partials/header.ejs") %>
 
-<h1> TODOs </h1>
+
 <div class="container">
-  <table class="table">
-    
-  <tbody>
-    <% todos.forEach(function(todo) { %>
-      <% if(id && id === todo.id) { %>
-        <form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
-          <tr class="<%= todo.task_status %>">
-            <td>
-              <div class="form-group">
-                <input class="form-control" type="text" name="todo[item]" value="<%= todo.item %>">
-              </div>
-            </td>
-            <td>
-              <div class="form-group">
-                <input class="form-control" type="text" name="todo[category]" value="<%= todo.category %>">
-              </div>
-            </td>
-            <td>
-              <div class="form-group">
-                <select class="form-control" name="todo[task_status]">
-                  <option value="todo" default> Todo </option>
-                  <option value="in-progress" default> in-progress </option>
-                  <option value="done" default> done </option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div class="form-group">
-                <select class="form-control" name="todo[type]">
-                  <option value="one-time" default> One Time </option>
-                  <option value="recurring"> Recurring </option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div class="form-group pull-right">
-                <input class="form-control" type="submit" name="Update">
-              </div>
-            </td>
-          </tr>
-        </form>
-      <% } else { %>
-        <tr class="<%= todo.task_status %>">
-          <td>
-            <a href="/todos/<%= todo.id %>">
-              <%= todo.item %>
-            </a>
-          </td>
-          <td>
-            <%= todo.category %> 
-          </td>
-          <td> <%= todo.task_status %> </td>
-          <td> <%= todo.type %> </td>
-          <td>
-            <form class="inline-form" action="/todos/<%= todo.id %>?_method=DELETE" method="POST">
-              <div class="form-group pull-right">
-                <input class="form-control" type="submit" value="x">
-              </div>
-            </form>
-          </td>
-        </tr>
-      <% } %>
-    </div>
+  <h1 class="text-center"> TODOs </h1>
+  <div class="row">
+    <a href="/todos/new">Add A TODO</a>
+  </div>
+  <div class="row justify-content-between">
+  <% todos.forEach(function(todo) { %>
+    <a href="/todos/<%= todo.id %>" class="item d-block card col-md-3 <%= todo.task_status %> align-items-center">
+      <div class="card-body">
+        <h4 class="card-title">
+            <%= todo.item %>
+        </h4>
+      </div>    
+    </a>
   <% }); %>
-  </table>
+  </div>
 </div>
+
 
 <%- include ("../partials/footer.ejs") %>

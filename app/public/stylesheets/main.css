@@ -23,3 +23,16 @@ form.new {
   max-width: 300px;
   margin: auto;
 }
+
+.item {
+  margin: 5px;
+  border-radius: 3%;
+}
+
+.item h4 {
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: none;
+}

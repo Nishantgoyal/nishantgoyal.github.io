@@ -22,4 +22,5 @@
 
 ## Version 2
 
-- Pomodoro
+- Pomodoro: Done
+- Add bootstrap 4
