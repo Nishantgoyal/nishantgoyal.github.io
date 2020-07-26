@@ -1,3 +1,12 @@
+.side_bar {
+  height: 90vh;
+  background: aliceblue;
+}
+
+.main_content {
+  height: 90vh;
+  background: aqua;
+}
 
 .strike {
   text-decoration: line-through;
@@ -22,15 +31,6 @@
 form.new {
   max-width: 300px;
   margin: auto;
-}
-
-.item {
-  margin: 5px;
-  border-radius: 3%;
-}
-
-.item h4 {
-  text-align: center;
 }
 
 a:hover {

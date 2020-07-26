@@ -1,21 +1,29 @@
 <%- include ("../partials/header.ejs") %>
 
-
-<div class="container">
-  <h1 class="text-center"> TODOs </h1>
-  <div class="row">
-    <a href="/todos/new">Add A TODO</a>
+<div class="container-fluid p-0 m-0">
+  <div class="row m-0">
+    <div class="side_bar col-3 p-0 ">
+      <h1 class="text-center bg-dark text-light m-0 p-3"> TODOs </h1>
+      <% todos.forEach(function(todo) { %>
+        <div class="row m-0">
+          <a href="/todos/<%= todo.id %>" class="col-12 p-2 item <%= todo.task_status %> m-0 text-center">
+            <h4>
+                <%= todo.item %>
+            </h4>
+          </a>
+      </div>
+      <% }); %>      
+    </div>
+    <div class="main_content col-9 p-0 m-0">
+      <div class="d-flex justify-content-end">
+        <a class="btn btn-info" href="/todos/new">Add A TODO</a>
+      </div>
+    </div>
   </div>
-  <div class="row justify-content-between">
-  <% todos.forEach(function(todo) { %>
-    <a href="/todos/<%= todo.id %>" class="item d-block card col-md-3 <%= todo.task_status %> align-items-center">
-      <div class="card-body">
-        <h4 class="card-title">
-            <%= todo.item %>
-        </h4>
-      </div>    
-    </a>
-  <% }); %>
+</div>
+<div class="container">
+  
+  <div class="row">
   </div>
 </div>
 
